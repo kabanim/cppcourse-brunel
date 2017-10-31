@@ -3,7 +3,7 @@
 using namespace std;
 
 Neuro::Neuro (double potential) //std::vector<unsigned short int> const& synapses)
-:MembranePotential(potential), NumberOfSpikes(0),localTime(0),inputcurrent(0),state(false),focus(false),S(0)
+:MembranePotential(potential), NumberOfSpikes(0),localTime(0),inputcurrent(0),state(false),focus(false)//,S(0)
 {
 	ring_buffer.resize(D/hequals+1);
 	
@@ -24,6 +24,7 @@ unsigned int Neuro::getNumberOfSpikes() const
 {
 	return NumberOfSpikes;
 }
+
 std::vector<unsigned int> Neuro::getTimeOfSPike() const
 {
 	return TimeOfSpike;
@@ -46,36 +47,55 @@ void Neuro::updatepotential(long time,double Iext, double S)
 }
 bool Neuro::update(unsigned long h)
 
-{   
-	std::default_random_engine generator;
-	std::poisson_distribution<> poisson(C_E*total*vext);
+{  	double S(0);
+    ofstream file("spikes.txt", std::ios_base::app);
+   
+	std::random_device dev;
+	std::mt19937 generator(dev());
+	std::poisson_distribution<> poisson(C_E*total*vext*h);
 
-	for( int i(0); i<synapses.size();++i)
-		{
-			///setMembranePotential(synapses[i]->getMembranePotential());
-		S+=synapses[i]->getMembranePotential();
+/*	for( int i(0); i<synapses.size();++i)
+   {
+		///setMembranePotential(synapses[i]->getMembranePotential());
+	///	S+=synapses[i]->getMembranePotential();
 		///getMembranePotential(); ///only neurones connected receive spikes
-		
-		}
-	S+=poisson(generator);
+		S+=i;
+	} */
+	
+	S+=ring_buffer[localTime]+J_E*poisson(generator);
+	 //I CHANGED HERE
+	
 	 //am i really giving to t+h potential t
 	assert(time>= 0);
 	if (time==0) return false;
+	
 	bool spike(false);
 	if (MembranePotential>Vth) ///neuron spikes
 	{
-		spike=true;
-	    t_spike=localTime;
-	    TimeOfSpike.push_back(t_spike);
-	}
+		
+	   spike=true;
+		//++S;
+	   t_spike=localTime;
+	   TimeOfSpike.push_back(t_spike);
+	   file<<localTime<<"\t";
+	   file<<S<<"\n";
+	   
+		}
+	
 	if((localTime-t_spike)<refrac) ///neuron is refractory
 	   setMembranePotential(0.0);
-	    else 
-	    updatepotential((localTime+h)*hequals,1.1, S);
-	    
-	 localTime=localTime+1;
+    else 
+	{
+	    updatepotential((localTime+h),0.0,S); ///was times*hequls
+	    	    	//cout<<"ca seg";
+	    	//file<<TimeOfSpike[TimeOfSpike.size()-1] <<"/t"<< MembranePotential<<"/n";
+	}
+	ring_buffer[localTime%(int(D/hequals)+1)]=0;
+	localTime=localTime+1;
+	S=0;
+	file.close();
+
 	return spike;
-	    
 }
 
 void Neuro::setMembranePotential(double potential)
@@ -111,6 +131,7 @@ void::Neuro::setToRefactoryState()
 void Neuro::receive(unsigned long arrival, double J_E)
 {
 	/*double potential(getMembranePotential());*/
+	
 	setMembranePotential(exp(-h/tau_excitation)*MembranePotential+getInputCurrent()*(membrane_resistance)*(1-exp(-h/tau_excitation))+J_E);
 	const size_t idx=arrival%(int((D/hequals)+1)); ///D over hequals give us effectively the number of steps delayed
 	assert(idx<ring_buffer.size());

@@ -3,6 +3,7 @@
 
 CMakeFiles/simulation.dir/main.cpp.o: ../constants.hpp
 CMakeFiles/simulation.dir/main.cpp.o: ../main.cpp
+CMakeFiles/simulation.dir/main.cpp.o: ../network.hpp
 CMakeFiles/simulation.dir/main.cpp.o: ../neuro.hpp
 CMakeFiles/simulation.dir/main.cpp.o: ../synapse.hpp
 

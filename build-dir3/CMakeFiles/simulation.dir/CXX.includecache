@@ -13,6 +13,8 @@ neuro.hpp
 /home/localguest/Documents/Neuro_3/neuro.hpp
 synapse.hpp
 /home/localguest/Documents/Neuro_3/synapse.hpp
+network.hpp
+/home/localguest/Documents/Neuro_3/network.hpp
 fstream
 -
 
@@ -26,6 +28,8 @@ vector
 iostream
 -
 random
+-
+map
 -
 neuro.hpp
 /home/localguest/Documents/Neuro_3/neuro.hpp
@@ -46,6 +50,8 @@ constants.hpp
 cassert
 -
 random
+-
+fstream
 -
 
 /home/localguest/Documents/Neuro_3/synapse.hpp

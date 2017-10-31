@@ -12,6 +12,12 @@ Network::Network(long t)
 	{
 		NeuronesNetwork.push_back(new Neuro (J_I));	
 	}
+	/*for(const auto& pair :mynetwork)
+	
+	{  pair.second=NeuronesNetwork;
+			
+		}*/
+
 }
 
 void Network::initializeNetwork()
@@ -22,8 +28,9 @@ void Network::initializeNetwork()
 	/// then we initialize the excitatory neurons and finally the random background noise
 	
 
-	std::vector<unsigned short int> connections;
-	std::default_random_engine generator;
+	//std::vector<unsigned short int> connections;
+	std::random_device dev;
+	std::mt19937 generator(dev());
 	///To generate the connections we need unifromly distributed random numbers
 	std::uniform_int_distribution<> distribution(0,numberOfNeurons-1);
 	///assert();
@@ -31,22 +38,18 @@ void Network::initializeNetwork()
 	std::uniform_int_distribution<> p_CI(0, 0.1*numberOfNeurons * C_I);
 	std::uniform_int_distribution<> p_CE(0, 0.1*numberOfNeurons * C_E); */
 
-	
-	
-
-	
 	for (auto& n: NeuronesNetwork)
 	{
 		 std::vector<Neuro*> synapses;
 		 for (int i (0); i< 0.1*numberOfNeurons; ++i)
 		 {
 			 synapses.push_back(NeuronesNetwork[distribution(generator)]);
-			 
 		 }
-		 
-		n->synapses=synapses;
+		n->synapses=synapses;	
 	
 	}
+			 
+
 /*
 	
 	unsigned int numberInhibitory(numberOfNeurons * C_I);
@@ -91,28 +94,52 @@ void Network::initializeNetwork()
 	
 }
 void Network::simulation()
-{
+{  
 	
 	do {
 		
-		for( auto& n:NeuronesNetwork)
+	 for( auto& n:NeuronesNetwork)
 		{
 			bool spike(n->update(1));
+
 			if (spike)
 			{
-				for( int i(0); i<n->synapses.size();++i)
+				for(unsigned int i(0); i<n->synapses.size();++i)
 				{
-					n->receive(globalsimulationclock+D,NeuronesNetwork[i]->getMembranePotential()); ///only neurones connected receive spikes
-				
+					
+					n->synapses[i]->receive(globalsimulationclock+D,NeuronesNetwork[i]->getMembranePotential()); ///only neurones connected receive spikes
 				}
 				
 			}
 		}
-			globalsimulationclock=globalsimulationclock+1;
+	    globalsimulationclock=globalsimulationclock+1;
+	    
+	  
+	    /*
+	    for (unsigned int i (0);i< NeuronesNetwork.size();++i)
+	    {
+			bool spike(NeuronesNetwork[i]->update(1));
+
+			if (spike)
+			{
+				
+				
+				switch i:
+				{
+					NeuronesNetwork[i]->synapses[i]->receive(globalsimulationclock+D,J_E);
+					
+				}
+					else 
+					{
+					NeuronesNetwork[i]->synapses[i]->receive(globalsimulationclock+D,J_I);
+					cout<<"segfault";
+						}	
+				}
 		
-		
-		
-    	 } while(globalsimulationclock<tstop) ;
+		}
+		globalsimulationclock=globalsimulationclock+1;
+		*/
+		} while(globalsimulationclock<20) ;
 	
 	
 }
@@ -127,7 +154,7 @@ void Network::random50neurons() {
 	do{
 		count = distribution(generator);
 		if (!NeuronesNetwork[count]->focusedon()){
-				neurons_[index]->settofocusedon(true);
+				neurons_[count]->settofocusedon(true);cd
 				++n;
 		}
 

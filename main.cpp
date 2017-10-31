@@ -1,5 +1,6 @@
 #include "neuro.hpp"
 #include "synapse.hpp"
+#include "network.hpp"
 #include <fstream>
 using namespace std;
 int main()
@@ -9,9 +10,17 @@ int a(0),b(4000);
 double Iext(1.01);
 double PotentialThreshold(20);
 int tstart(0);
-int tstop(10000);
+int tstop(10);
 
 
+Network N(0);
+N.initializeNetwork();
+cout<<"i am here 1"<<std::endl;
+
+N.simulation();
+
+cout<<"i am here 2"<<std::endl;
+/*
 bool spike(false);
 		
 		long simtime(tstart);
@@ -19,7 +28,7 @@ bool spike(false);
 		Neuro* neurone2=new Neuro();
 		//vector<Neuro*> neurones{neurone1,neurone2};
 		neurone1->add_synapse(neurone2);*/
-		ofstream file1,file2;
+	/*	ofstream file1,file2;
         file1.open ("MembranePotential.txt");
         file2.open ("MembranePotential2.txt");
 		
@@ -49,7 +58,7 @@ bool spike(false);
 							}*/
 				//SIMULATION LOOP FOR THE POSTSYNP NEURONS		
 				//APRES JE DOIS FAIRE POUR N NEURONES ICI Q UN SEUL EMETTEUR DE SIG 
-				for(auto& newconnection: neurone1->getSynapses())
+			/*	for(auto& newconnection: neurone1->getSynapses())
 				{
 					// spike=neurone1.update(simtime);
 					 if (spike==true)
@@ -76,6 +85,7 @@ for (auto t: neurone2->getTimeOfSPike())
 {
 	cout<<t*hequals<<endl;
 } 
+*/
 
  return 0;
 }

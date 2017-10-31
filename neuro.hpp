@@ -8,15 +8,14 @@ class Network; ///prdeclartion of class
 #include "constants.hpp"
 #include <cassert>
 #include <random>
-
+#include <fstream>
 
 
 using namespace std;
 class Neuro
 {
 	public:
-	
-	Neuro(double MembranePotential);/*, std::vector<unsigned short int> const& synapses/*std::vector<unsigned int>const& synapses*///)
+    Neuro(double MembranePotential);/*, std::vector<unsigned short int> const& synapses/*std::vector<unsigned int>const& synapses*///)
 	Neuro(const Neuro&);
 	double getMembranePotential() const;
 	unsigned int getNumberOfSpikes() const;
@@ -51,15 +50,13 @@ class Neuro
 	double MembranePotential;
 	unsigned int NumberOfSpikes;
 	std::vector<double> ring_buffer;
-	
-	
 	/// we use a vector where we stock each value of "pas de temps" where a recorded a spike 
 	std::vector<unsigned int> TimeOfSpike;
 	long localTime;
 	bool focus;
 	double inputcurrent;
 	double t_spike;
-	double S; ///sum of spikes at time t
+	//double S; ///sum of spikes at time t
 	///false i.e is not in refractory state 
 	
 	

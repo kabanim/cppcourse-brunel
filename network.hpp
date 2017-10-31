@@ -3,7 +3,9 @@
 #include <vector>
 #include <iostream>
 #include <random>
+#include <map>
 #include "neuro.hpp"
+
 
 using namespace std;
 
@@ -20,7 +22,8 @@ class Network
 	void initializeNetwork();
 	void random50neurons();
 	void simulation();
-	std::vector<Neuro*> NeuronesNetwork;
+    std::vector<Neuro*> NeuronesNetwork;
+	std::map<int,std::vector<Neuro*>> mynetwork;
 	~Network();
 	
 	private:
