@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as pl
 
-data = np.genfromtxt('spikes.gdf')
+data = np.genfromtxt('spikes.txt')
 
 select= np.array([d for d in data if d[1] < 30])
 data1= select.transpose()

@@ -87,8 +87,7 @@ bool Neuro::update(unsigned long h)
     else 
 	{
 	    updatepotential((localTime+h),0.0,S); ///was times*hequls
-	    	    	//cout<<"ca seg";
-	    	//file<<TimeOfSpike[TimeOfSpike.size()-1] <<"/t"<< MembranePotential<<"/n";
+	    	    
 	}
 	ring_buffer[localTime%(int(D/hequals)+1)]=0;
 	localTime=localTime+1;
