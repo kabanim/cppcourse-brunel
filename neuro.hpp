@@ -7,12 +7,14 @@
  *  \details Neuro stores the time of the spikes occured in a vector, it also stores the potential in a buffer until they are received after a delay D
  * 
  */
-class Network; ///prdeclartion of class
+class Network; ///prdeclartion of class for circular dependance
+
+
 #ifndef NEURO_HPP
 #define NEURO_HPP
-#ifdef TEST
-#include <gtest/gtest.h>
-#endif
+				#ifdef TEST
+				#include <gtest/gtest.h>
+				#endif
 #include <iostream>
 #include <vector>
 #include <cmath>

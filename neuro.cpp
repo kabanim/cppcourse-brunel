@@ -1,5 +1,5 @@
 #include "neuro.hpp"
-
+#include "network.hpp"
 using namespace std;
 
 Neuro::Neuro (double potential) //std::vector<unsigned short int> const& synapses)
@@ -29,8 +29,8 @@ bool Neuro::isInRefractoryState() {
 
 void Neuro::updatepotential(long time, double Iext, double S) {
 	double potential(getMembranePotential());
-    double inputCurrent = ring_buffer[time% int(D/hequals)+1];
-
+    double inputCurrent = ring_buffer[time % (int(D/hequals)+1)];
+    inputCurrent+=Network::Noise();
 	
     setMembranePotential(exp(-h*hequals/tau_excitation)*potential+inputCurrent);
                            
@@ -41,14 +41,21 @@ bool Neuro::update(unsigned long h) {
 	bool spike(false);
 
 
-    if((localTime-t_spike)<refrac) {
-        setMembranePotential(0.0);
-    } else if (MembranePotential > Vth){
-        spike=true;
-        t_spike=localTime;
-    } else {
-        updatepotential((localTime + 1), 0.0, 0);
-           }
+		if((localTime-t_spike)<refrac) 
+		{
+			setMembranePotential(0.0);
+			} 
+			
+		else if (MembranePotential > Vth){
+			
+			spike=true;
+			t_spike=localTime;
+			setMembranePotential(0.0);
+				
+				} else 
+			{
+				updatepotential(localTime, 0.0, 0);
+			}
 
     ring_buffer[localTime%(int((D/hequals)+1))] = 0;
     localTime=localTime + 1;

@@ -51,6 +51,7 @@ CMakeFiles/networktest.dir/neuro.cpp.o: ../gtest/include/gtest/internal/gtest-st
 CMakeFiles/networktest.dir/neuro.cpp.o: ../gtest/include/gtest/internal/gtest-tuple.h
 CMakeFiles/networktest.dir/neuro.cpp.o: ../gtest/include/gtest/internal/gtest-type-util.h
 CMakeFiles/networktest.dir/neuro.cpp.o: ../constants.hpp
+CMakeFiles/networktest.dir/neuro.cpp.o: ../network.hpp
 CMakeFiles/networktest.dir/neuro.cpp.o: ../neuro.cpp
 CMakeFiles/networktest.dir/neuro.cpp.o: ../neuro.hpp
 

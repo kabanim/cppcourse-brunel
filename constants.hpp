@@ -28,7 +28,7 @@ int const refrac=2;
 ///the post synaptic potential
 double const J_E=0.1;
 ///the post synaptic potential
-double const J_I=0.5;
+double const J_I=- 0.5;
 ///the delay of transmission in ms
 double const D=1.5;
 ///the number of recurrent excitatory connections (equals also the number of connections from outside the network

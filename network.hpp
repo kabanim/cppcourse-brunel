@@ -43,6 +43,17 @@ class Network
 	 *  \details creates the neurons with the constants we have i.e 20% inhibitory and 80% excitatory
 	 * it also generates the connetion between neurons according to uniform random distribution
 	 */
+	 
+	 
+	 static double Noise() 
+	 {
+    std::random_device dev;
+    std::mt19937 generator(dev());
+    std::poisson_distribution<> poisson(vext);
+	int spikes_number=poisson(generator);
+	return J_E*spikes_number;
+	
+	 }
 	
 	void initializeNetwork();
 	

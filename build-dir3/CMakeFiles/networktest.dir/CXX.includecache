@@ -359,6 +359,8 @@ neuro.hpp
 /home/localguest/Documents/Neuro_3/neuro.cpp
 neuro.hpp
 /home/localguest/Documents/Neuro_3/neuro.hpp
+network.hpp
+/home/localguest/Documents/Neuro_3/network.hpp
 
 /home/localguest/Documents/Neuro_3/neuro.hpp
 gtest/gtest.h

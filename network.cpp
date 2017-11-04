@@ -28,17 +28,17 @@ void Network::initializeNetwork() {
 }
 
 void Network::simulation() {
-    std::random_device dev;
+   /* std::random_device dev;
     std::mt19937 generator(dev());
-    std::poisson_distribution<> poisson(vext); //ici j'ai changé c'etait hequals *vext
+    std::poisson_distribution<> poisson(vext); //ici j'ai changé c'etait hequals *vext*/
     ofstream file("spikes.txt");
 
     do {
         double S(0);
         for( auto& n:NeuronesNetwork) {
 
-            double external = poisson(generator);
-           n->receive(globalsimulationclock+D/hequals, J_E * external);
+           /* double external = poisson(generator);
+           n->receive(globalsimulationclock +D/hequals, J_E * external);*/
           // S=J_E*external;
 
             bool spike(n->update(1));
