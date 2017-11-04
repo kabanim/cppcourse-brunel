@@ -1,0 +1,120 @@
+\hypertarget{classNetwork}{\section{Network Class Reference}
+\label{classNetwork}\index{Network@{Network}}
+}
+
+
+The class \hyperlink{classNetwork}{Network} contains a neuronal network that consists of indivuals of the class \hyperlink{classNeuro}{Neuro}.  
+
+
+
+
+{\ttfamily \#include $<$network.\-hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classNetwork_ab77c609c94083d6a16efaf695eec37c7}{Network} (long t)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classNetwork_aecc4f34723979865c133409b28c36e40}{initialize\-Network} ()
+\begin{DoxyCompactList}\small\item\em initializes the network of neurons \end{DoxyCompactList}\item 
+void \hyperlink{classNetwork_ad1bc5e435a8a2382e557ae00a9e7831c}{simulation} ()
+\begin{DoxyCompactList}\small\item\em starts the simulation of the network of neurons \end{DoxyCompactList}\item 
+void \hyperlink{classNetwork_a320db3d014ddbc7046984fc7d26c1bd5}{reset} ()
+\begin{DoxyCompactList}\small\item\em resets the network of neurons \end{DoxyCompactList}\item 
+\hypertarget{classNetwork_a7a4e19cdb4bf0c7ecf82baa643831492}{\hyperlink{classNetwork_a7a4e19cdb4bf0c7ecf82baa643831492}{$\sim$\-Network} ()}\label{classNetwork_a7a4e19cdb4bf0c7ecf82baa643831492}
+
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classNetwork_a4888ef9b87721a5e6e91ca2e6258c07c}{int {\bfseries tstop} =10000}\label{classNetwork_a4888ef9b87721a5e6e91ca2e6258c07c}
+
+\item 
+\hypertarget{classNetwork_aa175c3ef0fad5bec07e17fa30ee27ab6}{int {\bfseries tstart} =0}\label{classNetwork_aa175c3ef0fad5bec07e17fa30ee27ab6}
+
+\item 
+\hypertarget{classNetwork_a19dc8163886bd20d980a918e5006bb2b}{int {\bfseries a} =0}\label{classNetwork_a19dc8163886bd20d980a918e5006bb2b}
+
+\item 
+\hypertarget{classNetwork_aef8203ea6b1eb4cbf68db93d370f9a24}{int {\bfseries b} =4000}\label{classNetwork_aef8203ea6b1eb4cbf68db93d370f9a24}
+
+\item 
+\hypertarget{classNetwork_a797e3b65a0becfb93c82b4a4588e2582}{std\-::vector$<$ \hyperlink{classNeuro}{Neuro} $\ast$ $>$ \hyperlink{classNetwork_a797e3b65a0becfb93c82b4a4588e2582}{Neurones\-Network}}\label{classNetwork_a797e3b65a0becfb93c82b4a4588e2582}
+
+\begin{DoxyCompactList}\small\item\em neurons in the network \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The class \hyperlink{classNetwork}{Network} contains a neuronal network that consists of indivuals of the class \hyperlink{classNeuro}{Neuro}. 
+
+Netwrok initializes the network and the connections between individual neurons.
+
+\hyperlink{classNetwork}{Network} starts the simulation 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classNetwork_ab77c609c94083d6a16efaf695eec37c7}{\index{Network@{Network}!Network@{Network}}
+\index{Network@{Network}!Network@{Network}}
+\subsubsection[{Network}]{\setlength{\rightskip}{0pt plus 5cm}Network\-::\-Network (
+\begin{DoxyParamCaption}
+\item[{long}]{t}
+\end{DoxyParamCaption}
+)}}\label{classNetwork_ab77c609c94083d6a16efaf695eec37c7}
+
+
+Constructor. 
+
+Initializes the network. 
+\begin{DoxyParams}{Parameters}
+{\em long} & time \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classNetwork_aecc4f34723979865c133409b28c36e40}{\index{Network@{Network}!initialize\-Network@{initialize\-Network}}
+\index{initialize\-Network@{initialize\-Network}!Network@{Network}}
+\subsubsection[{initialize\-Network}]{\setlength{\rightskip}{0pt plus 5cm}void Network\-::initialize\-Network (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classNetwork_aecc4f34723979865c133409b28c36e40}
+
+
+initializes the network of neurons 
+
+creates the neurons with the constants we have i.\-e 20\% inhibitory and 80\% excitatory it also generates the connetion between neurons according to uniform random distribution maybe add an assertion here to check the initialization
+
+Here, we initialize the network by initializing the inihibitory neurons then we initialize the excitatory neurons and finally the random background noise
+
+To generate the connections we need unifromly distributed random numbers
+
+assert(); \hypertarget{classNetwork_a320db3d014ddbc7046984fc7d26c1bd5}{\index{Network@{Network}!reset@{reset}}
+\index{reset@{reset}!Network@{Network}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}void Network\-::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classNetwork_a320db3d014ddbc7046984fc7d26c1bd5}
+
+
+resets the network of neurons 
+
+delete the \hyperlink{classNetwork}{Network}
+
+deletes the neurons and desallocates the memory \hypertarget{classNetwork_ad1bc5e435a8a2382e557ae00a9e7831c}{\index{Network@{Network}!simulation@{simulation}}
+\index{simulation@{simulation}!Network@{Network}}
+\subsubsection[{simulation}]{\setlength{\rightskip}{0pt plus 5cm}void Network\-::simulation (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classNetwork_ad1bc5e435a8a2382e557ae00a9e7831c}
+
+
+starts the simulation of the network of neurons 
+
+only neurones connected receive spikes 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+network.\-hpp\item 
+network.\-cpp\end{DoxyCompactItemize}

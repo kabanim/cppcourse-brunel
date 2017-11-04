@@ -1,11 +1,9 @@
 #include <vector>
-#include <stdexcept>
 #include <iostream>
-#include <chrono>
 
 #include <gtest/gtest.h>
-#include "../src/Cortex.hpp"
-#include "../src/Neuron.hpp"
+#include "../network.hpp"
+#include "../neuron.hpp"
 
 double excitatory_amplitude (0.1);
 double relative_inhibitory_amplitude (5.0);

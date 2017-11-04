@@ -70,6 +70,16 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/local/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/localguest/Documents/Neuro_3/build-dir3/CMakeFiles /home/localguest/Documents/Neuro_3/build-dir3/CMakeFiles/progress.marks
@@ -102,6 +112,45 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named doc
+
+# Build rule for target.
+doc: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 doc
+.PHONY : doc
+
+# fast build rule for target.
+doc/fast:
+	$(MAKE) -f CMakeFiles/doc.dir/build.make CMakeFiles/doc.dir/build
+.PHONY : doc/fast
+
+#=============================================================================
+# Target rules for targets named networktest
+
+# Build rule for target.
+networktest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 networktest
+.PHONY : networktest
+
+# fast build rule for target.
+networktest/fast:
+	$(MAKE) -f CMakeFiles/networktest.dir/build.make CMakeFiles/networktest.dir/build
+.PHONY : networktest/fast
+
+#=============================================================================
+# Target rules for targets named neuronetest
+
+# Build rule for target.
+neuronetest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 neuronetest
+.PHONY : neuronetest
+
+# fast build rule for target.
+neuronetest/fast:
+	$(MAKE) -f CMakeFiles/neuronetest.dir/build.make CMakeFiles/neuronetest.dir/build
+.PHONY : neuronetest/fast
+
+#=============================================================================
 # Target rules for targets named simulation
 
 # Build rule for target.
@@ -113,6 +162,32 @@ simulation: cmake_check_build_system
 simulation/fast:
 	$(MAKE) -f CMakeFiles/simulation.dir/build.make CMakeFiles/simulation.dir/build
 .PHONY : simulation/fast
+
+#=============================================================================
+# Target rules for targets named gtest
+
+# Build rule for target.
+gtest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gtest
+.PHONY : gtest
+
+# fast build rule for target.
+gtest/fast:
+	$(MAKE) -f gtest/CMakeFiles/gtest.dir/build.make gtest/CMakeFiles/gtest.dir/build
+.PHONY : gtest/fast
+
+#=============================================================================
+# Target rules for targets named gtest_main
+
+# Build rule for target.
+gtest_main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gtest_main
+.PHONY : gtest_main
+
+# fast build rule for target.
+gtest_main/fast:
+	$(MAKE) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/build
+.PHONY : gtest_main/fast
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -143,6 +218,8 @@ network.o: network.cpp.o
 
 # target to build an object file
 network.cpp.o:
+	$(MAKE) -f CMakeFiles/networktest.dir/build.make CMakeFiles/networktest.dir/network.cpp.o
+	$(MAKE) -f CMakeFiles/neuronetest.dir/build.make CMakeFiles/neuronetest.dir/network.cpp.o
 	$(MAKE) -f CMakeFiles/simulation.dir/build.make CMakeFiles/simulation.dir/network.cpp.o
 .PHONY : network.cpp.o
 
@@ -151,6 +228,8 @@ network.i: network.cpp.i
 
 # target to preprocess a source file
 network.cpp.i:
+	$(MAKE) -f CMakeFiles/networktest.dir/build.make CMakeFiles/networktest.dir/network.cpp.i
+	$(MAKE) -f CMakeFiles/neuronetest.dir/build.make CMakeFiles/neuronetest.dir/network.cpp.i
 	$(MAKE) -f CMakeFiles/simulation.dir/build.make CMakeFiles/simulation.dir/network.cpp.i
 .PHONY : network.cpp.i
 
@@ -159,6 +238,8 @@ network.s: network.cpp.s
 
 # target to generate assembly for a file
 network.cpp.s:
+	$(MAKE) -f CMakeFiles/networktest.dir/build.make CMakeFiles/networktest.dir/network.cpp.s
+	$(MAKE) -f CMakeFiles/neuronetest.dir/build.make CMakeFiles/neuronetest.dir/network.cpp.s
 	$(MAKE) -f CMakeFiles/simulation.dir/build.make CMakeFiles/simulation.dir/network.cpp.s
 .PHONY : network.cpp.s
 
@@ -167,6 +248,8 @@ neuro.o: neuro.cpp.o
 
 # target to build an object file
 neuro.cpp.o:
+	$(MAKE) -f CMakeFiles/networktest.dir/build.make CMakeFiles/networktest.dir/neuro.cpp.o
+	$(MAKE) -f CMakeFiles/neuronetest.dir/build.make CMakeFiles/neuronetest.dir/neuro.cpp.o
 	$(MAKE) -f CMakeFiles/simulation.dir/build.make CMakeFiles/simulation.dir/neuro.cpp.o
 .PHONY : neuro.cpp.o
 
@@ -175,6 +258,8 @@ neuro.i: neuro.cpp.i
 
 # target to preprocess a source file
 neuro.cpp.i:
+	$(MAKE) -f CMakeFiles/networktest.dir/build.make CMakeFiles/networktest.dir/neuro.cpp.i
+	$(MAKE) -f CMakeFiles/neuronetest.dir/build.make CMakeFiles/neuronetest.dir/neuro.cpp.i
 	$(MAKE) -f CMakeFiles/simulation.dir/build.make CMakeFiles/simulation.dir/neuro.cpp.i
 .PHONY : neuro.cpp.i
 
@@ -183,8 +268,37 @@ neuro.s: neuro.cpp.s
 
 # target to generate assembly for a file
 neuro.cpp.s:
+	$(MAKE) -f CMakeFiles/networktest.dir/build.make CMakeFiles/networktest.dir/neuro.cpp.s
+	$(MAKE) -f CMakeFiles/neuronetest.dir/build.make CMakeFiles/neuronetest.dir/neuro.cpp.s
 	$(MAKE) -f CMakeFiles/simulation.dir/build.make CMakeFiles/simulation.dir/neuro.cpp.s
 .PHONY : neuro.cpp.s
+
+neuro_test.o: neuro_test.cpp.o
+.PHONY : neuro_test.o
+
+# target to build an object file
+neuro_test.cpp.o:
+	$(MAKE) -f CMakeFiles/networktest.dir/build.make CMakeFiles/networktest.dir/neuro_test.cpp.o
+	$(MAKE) -f CMakeFiles/neuronetest.dir/build.make CMakeFiles/neuronetest.dir/neuro_test.cpp.o
+.PHONY : neuro_test.cpp.o
+
+neuro_test.i: neuro_test.cpp.i
+.PHONY : neuro_test.i
+
+# target to preprocess a source file
+neuro_test.cpp.i:
+	$(MAKE) -f CMakeFiles/networktest.dir/build.make CMakeFiles/networktest.dir/neuro_test.cpp.i
+	$(MAKE) -f CMakeFiles/neuronetest.dir/build.make CMakeFiles/neuronetest.dir/neuro_test.cpp.i
+.PHONY : neuro_test.cpp.i
+
+neuro_test.s: neuro_test.cpp.s
+.PHONY : neuro_test.s
+
+# target to generate assembly for a file
+neuro_test.cpp.s:
+	$(MAKE) -f CMakeFiles/networktest.dir/build.make CMakeFiles/networktest.dir/neuro_test.cpp.s
+	$(MAKE) -f CMakeFiles/neuronetest.dir/build.make CMakeFiles/neuronetest.dir/neuro_test.cpp.s
+.PHONY : neuro_test.cpp.s
 
 # Help Target
 help:
@@ -194,7 +308,13 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... doc"
+	@echo "... neuronetest"
+	@echo "... networktest"
+	@echo "... test"
 	@echo "... simulation"
+	@echo "... gtest"
+	@echo "... gtest_main"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
@@ -204,6 +324,9 @@ help:
 	@echo "... neuro.o"
 	@echo "... neuro.i"
 	@echo "... neuro.s"
+	@echo "... neuro_test.o"
+	@echo "... neuro_test.i"
+	@echo "... neuro_test.s"
 .PHONY : help
 
 

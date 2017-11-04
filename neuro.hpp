@@ -26,6 +26,12 @@ using namespace std;
 class Neuro
 {
 	public:
+	 #ifdef TEST
+		FRIEND_TEST(neuronetest, activate_neuron);
+	  #endif
+
+	
+
 		/*! \brief Constructor
 		 *  \details Initializes a Neuron.
 		 */
@@ -130,7 +136,8 @@ class Neuro
 	 *  \details the neurons to which a given neuron are connected are stocked here
 	 */
 	vector<Neuro*> synapses;
-	
+	double J;
+
 	
 	private:
 	/*! \brief the potential of a given neuron
@@ -150,6 +157,9 @@ class Neuro
 	/*! \brief long local time of a given neuron
 	 */
 	long localTime;
+	/*! \brief poisson distribution
+	 */
+	std::poisson_distribution<> poisson;
 	bool focus;
 	/*! \brief input current of a given neuron
 	 *  \details irrelavent in a neural simulation

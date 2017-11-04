@@ -21,6 +21,13 @@ using namespace std;
 class Network
 {
 	public:
+		#ifdef TEST
+		FRIEND_TEST(Network_test, initializeNetwork);
+		FRIEND_TEST(networktest, reset);
+		FRIEND_TEST(networktest, numberOfConnections);
+
+
+		#endif
 	
 	int tstop=10000;
 	int tstart=0;
