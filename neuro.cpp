@@ -2,8 +2,14 @@
 #include "network.hpp"
 using namespace std;
 
+<<<<<<< HEAD
+Neuro::Neuro (double potential) 
+:MembranePotential(potential), NumberOfSpikes(0),localTime(0),inputcurrent(0),state(false),focus(false)
+{
+=======
 Neuro::Neuro (double potential) //std::vector<unsigned short int> const& synapses)
 :MembranePotential(0), NumberOfSpikes(0),localTime(0),inputcurrent(0),state(false),focus(false),J(potential) {
+>>>>>>> e4f948a425391dec84f5b7e9c853f657d3883dd8
     ring_buffer.resize(D/hequals+1);
 }
 
@@ -32,14 +38,32 @@ void Neuro::updatepotential(long time, double Iext, double S) {
     double inputCurrent = ring_buffer[time % (int(D/hequals)+1)];
     inputCurrent+=Network::Noise();
 	
+<<<<<<< HEAD
+    setMembranePotential(exp(-h*hequals/tau_excitation)*potential+inputCurrent);                       
+=======
     setMembranePotential(exp(-h*hequals/tau_excitation)*potential+inputCurrent);
                            
+>>>>>>> e4f948a425391dec84f5b7e9c853f657d3883dd8
 }
 
 bool Neuro::update(unsigned long h) {
     double S(0);
 	bool spike(false);
 
+<<<<<<< HEAD
+    if(MembranePotential > Vth){
+        spike=true;
+        t_spike=localTime;
+        TimeOfSpike.push_back(t_spike);
+    }
+
+    if((localTime-t_spike)<refrac) {
+        setMembranePotential(0.0);
+    }
+    else {
+        updatepotential(localTime, 0.0, 0);
+    }
+=======
 
 		if((localTime-t_spike)<refrac) 
 		{
@@ -56,6 +80,7 @@ bool Neuro::update(unsigned long h) {
 			{
 				updatepotential(localTime, 0.0, 0);
 			}
+>>>>>>> e4f948a425391dec84f5b7e9c853f657d3883dd8
 
     ring_buffer[localTime%(int((D/hequals)+1))] = 0;
     localTime=localTime + 1;

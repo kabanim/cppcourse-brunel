@@ -1,4 +1,25 @@
 #include "neuro.hpp"
+<<<<<<< HEAD
+#include "network.hpp"
+#include <fstream>
+using namespace std;
+int main() {
+	
+    int a(0),b(4000);
+    double Iext(1.01);
+    double PotentialThreshold(20);
+    int tstart(0);
+    int tstop(10);
+
+    Network N(0);
+
+    N.initializeNetwork();
+    cout<<"i am here 1"<<std::endl;
+    N.simulation();
+    cout<<"i am here 2"<<std::endl;
+
+    return 0;
+=======
 #include "synapse.hpp"
 #include "network.hpp"
 #include <fstream>
@@ -88,4 +109,5 @@ for (auto t: neurone2->getTimeOfSPike())
 */
 
  return 0;
+>>>>>>> e4f948a425391dec84f5b7e9c853f657d3883dd8
 }

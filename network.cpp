@@ -6,7 +6,11 @@ Network::Network(long t):numberOfNeurons(12500),globalsimulationclock(0) {
 		NeuronesNetwork.push_back(new Neuro(J_E));
 	}
 
+<<<<<<< HEAD
+    for (int i(C_E*numberOfNeurons); i<numberOfNeurons; ++i) {
+=======
     for (int i(C_E*numberOfNeurons); i<numberOfNeurons; ++i)	{
+>>>>>>> e4f948a425391dec84f5b7e9c853f657d3883dd8
 		NeuronesNetwork.push_back(new Neuro (J_I));	
 	}
 
@@ -18,8 +22,12 @@ void Network::initializeNetwork() {
 	std::mt19937 generator(dev());
 	std::uniform_int_distribution<> distribution(0,numberOfNeurons-1);
 
+<<<<<<< HEAD
+    for (auto& n: NeuronesNetwork) 	{
+=======
 	for (auto& n: NeuronesNetwork)
 	{
+>>>>>>> e4f948a425391dec84f5b7e9c853f657d3883dd8
          for (int i (0); i< 0.1*numberOfNeurons; ++i) {
              Neuro* neighbor = NeuronesNetwork[distribution(generator)];
              neighbor->synapses.push_back(n);
@@ -28,6 +36,29 @@ void Network::initializeNetwork() {
 }
 
 void Network::simulation() {
+<<<<<<< HEAD
+
+    do {
+        for( auto& n:NeuronesNetwork) {
+            bool spike(n->update(1));
+            if (spike) {
+                for(unsigned int i(0); i<n->synapses.size();++i) {
+                    n->synapses[i]->receive(globalsimulationclock+D/hequals, n->getMembranePotential());
+                }
+            }
+        }
+        globalsimulationclock=globalsimulationclock+1;
+      } while(globalsimulationclock<10000);
+
+    cout<<"Start writing the spikes"<<endl;
+    ofstream file("spikes.txt");
+    for(int i (0); i<numberOfNeurons; ++i) {
+        //Write stuff at the end
+        for(auto& t:NeuronesNetwork[i]->getTimeOfSPike()) {
+           file<<t<<"\t"<<i<<"\n";
+        }
+    }
+=======
    /* std::random_device dev;
     std::mt19937 generator(dev());
     std::poisson_distribution<> poisson(vext); //ici j'ai changé c'etait hequals *vext*/
@@ -54,6 +85,7 @@ void Network::simulation() {
         globalsimulationclock=globalsimulationclock+1;
 
       } while(globalsimulationclock<1000);
+>>>>>>> e4f948a425391dec84f5b7e9c853f657d3883dd8
     file.close();
 }
 
