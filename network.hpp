@@ -25,7 +25,7 @@ class Network
 		FRIEND_TEST(Network_test, initializeNetwork);
 		FRIEND_TEST(networktest, reset);
 		FRIEND_TEST(networktest, numberOfConnections);
-
+		FRIEND_TEST(networktest, NeuronsType);
 
 		#endif
 	
@@ -45,15 +45,7 @@ class Network
 	 */
 	 
 	 
-<<<<<<< HEAD
-	 static double Noise() {
-        std::random_device dev;
-        std::mt19937 generator(dev());
 
-        std::poisson_distribution<> poisson(vext);
-        int spikes_number=poisson(generator);
-        return J_E*spikes_number;
-=======
 	 static double Noise() 
 	 {
     std::random_device dev;
@@ -62,7 +54,6 @@ class Network
 	int spikes_number=poisson(generator);
 	return J_E*spikes_number;
 	
->>>>>>> e4f948a425391dec84f5b7e9c853f657d3883dd8
 	 }
 	
 	void initializeNetwork();

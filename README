@@ -12,6 +12,20 @@ Place yourself in the build-dir3 directory and execute the following commands in
 		cmake ..
 		make
 
+### SIMULATION TIME
+
+This simulation takes quite a long time up to 5 minutes so please wait until the simulation ends
+To test different graphs output, change two things in the constants file:
+                1. the v ext constant to 2 , 0.9 or 3 dependant on the graph you want to see and firing rate of the neurons
+		2. the strength of connections g 6, 5, 4.5 or 3
+Then you can place yourself in the build-dir3 and exceute the following commands to create the graphs
+
+   	       python3 graphes.py
+
+
+### Results graphs
+A folder with the results graphs was created for each of the Brunel figures in figure 8, A, B, C and D page 197
+
 
 ### RUNNING THE SIMULATION
 

@@ -37,11 +37,8 @@ class Neuro
 		/*! \brief Constructor
 		 *  \details Initializes a Neuron.
 		 */
-<<<<<<< HEAD
     Neuro(double MembranePotential);
-=======
-    Neuro(double MembranePotential);/*, std::vector<unsigned short int> const& synapses/*std::vector<unsigned int>const& synapses*///)
->>>>>>> e4f948a425391dec84f5b7e9c853f657d3883dd8
+
     /*! \brief Constructor of copy
      * 
      */
@@ -116,15 +113,7 @@ class Neuro
 	 *  @return double 
 	 */
 	double getInputCurrent() const;
-<<<<<<< HEAD
 
-=======
-	
-	/*! \brief adds time of spike to vector of spike times
-	 *  @return long 
-	 */
-	void add_time_of_spike(long);
->>>>>>> e4f948a425391dec84f5b7e9c853f657d3883dd8
 	
 	/*! \brief stockes the potential and the time of arrival of spike to a given neuron
 	 *  @return unsigned long, double 
@@ -146,11 +135,7 @@ class Neuro
 	 *  \details the neurons to which a given neuron are connected are stocked here
 	 */
 	vector<Neuro*> synapses;
-<<<<<<< HEAD
-	
-=======
-	double J;
->>>>>>> e4f948a425391dec84f5b7e9c853f657d3883dd8
+
 
 	
 	private:
