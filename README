@@ -40,7 +40,7 @@ Place yourself in the build directory and execute the following commands in the 
 		make
 		make test
 		
-This generates an executable, NeuronSimulation_test, which can be launched for further information. Make tests indicates whether the test passed.
+This generates 2 executables, networktest and neurontest, which can be launched for further information. Make tests indicates whether the test passed.
 
 
 
