@@ -58,7 +58,13 @@ Neuro neuron(0);
 	
 }
 
+/**FRIEND_TEST(networktest, numberOfConnections)
+{
 
+	
+	
+	
+}**/
 
 
 int main(int argc, char **argv) { 

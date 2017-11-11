@@ -31,8 +31,6 @@ class Network
 	
 
 	
-
-	
 	/*! \brief Constructor
 	 *  \details Initializes the network.
 	 * @param long time
@@ -48,11 +46,11 @@ class Network
 	*/
 
 static double Noise() {
-static std::random_device dev;
-static std::mt19937 generator(dev());
-static std::poisson_distribution<> poisson(vext_);
-int spikes_number=poisson(generator);
-return J_E*spikes_number;
+	static std::random_device dev;
+	static std::mt19937 generator(dev());
+	static std::poisson_distribution<> poisson(vext);
+	int spikes_number=poisson(generator);
+	return J_E*spikes_number;
 }
 	
 	void initializeNetwork();

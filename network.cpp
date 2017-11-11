@@ -48,13 +48,12 @@ void Network::simulation() {
       } while(globalsimulationclock_<10000);
 
     cout<<"Start writing the spikes"<<endl;
-    ofstream file("spikes.txt");
+    ofstream file("../spikes.txt");
     for(int i (0); i<numberOfNeurons_; ++i) {
         for(auto& t:NeuronesNetwork[i]->getTimeOfSPike()) {
            file<<t<<"\t"<<i<<"\n";
         }
     }
-
 }
 
 void Network::reset() {
