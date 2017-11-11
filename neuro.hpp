@@ -156,9 +156,7 @@ class Neuro
 	/*! \brief long local time of a given neuron
 	 */
 	long localTime;
-	/*! \brief poisson distribution
-	 */
-	std::poisson_distribution<> poisson;
+	
 	bool focus;
 	/*! \brief input current of a given neuron
 	 *  \details irrelavent in a neural simulation

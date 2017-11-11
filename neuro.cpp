@@ -38,13 +38,14 @@ void Neuro::updatepotential(long time, double Iext, double S) {
 }
 
 bool Neuro::update(unsigned long h) {
-    double S(0);
 	bool spike(false);
 
-    if(MembranePotential > Vth){
+    if(MembranePotential > Vth)
+    {
         spike=true;
         t_spike=localTime;
         TimeOfSpike.push_back(t_spike);
+        setMembranePotential(0.0);
     }
 
     if((localTime-t_spike)<refrac) {
@@ -75,9 +76,9 @@ void::Neuro::setToRefactoryState() {
 	setMembranePotential(Vr);
 	state=true; //isrefractory
 }
-void Neuro::receive(unsigned long arrival, double J_E) {
-    const size_t idx = arrival%(int((D/hequals)+1)); ///D over hequals give us effectively the number of steps delayed
-    ring_buffer[idx] += J_E;
+void Neuro::receive(unsigned long arrival, double J) {
+    const size_t idx = arrival%(int((D/hequals)+1)); /// D over hequals give us effectively the number of steps delayed
+    ring_buffer[idx] += J;
 }
 
 bool Neuro::focusedon() const

@@ -12,13 +12,13 @@
 
 
 TEST(networktest, initializeNetwork) {
-	Network n(0);
+	Network n(0,2,3);
 	EXPECT_EQ(12500,n.NeuronesNetwork.size());
 	
 }
 
 TEST(networktest, NeuronsType) {
-	Network n(0);
+	Network n(0,2,3);
 	size_t j(0), k(0);
 	for(size_t i(0); i < total; ++i) 
 	{
@@ -33,7 +33,7 @@ TEST(networktest, NeuronsType) {
 
 
 TEST(networktest, reset) {
-	Network n(0);
+	Network n(0,2,3);
 	n.reset();
 	EXPECT_EQ(0, n.NeuronesNetwork.size());
 }

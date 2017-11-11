@@ -1,12 +1,13 @@
 #include "network.hpp"
 
-//double Network::vext_;
+double Network::vext_;
 
-Network::Network(long t)//,double vext, double g)
-:numberOfNeurons_(12500),globalsimulationclock_(0)//,g_(g),J_I(-g_*J_E)
-	//vext_=vext;
+Network::Network(long t,double vext, double g)
+:numberOfNeurons_(12500),globalsimulationclock_(0),g_(g),J_I(-g_*J_E)
+{
+	vext_=vext;
 
- {   for (int i(0); i<C_E*numberOfNeurons_; ++i) {
+   for (int i(0); i<C_E*numberOfNeurons_; ++i) {
 		NeuronesNetwork.push_back(new Neuro(J_E));
 	}
 
@@ -35,23 +36,33 @@ void Network::initializeNetwork() {
 
 void Network::simulation() {
 
-    do {
-        for( auto& n:NeuronesNetwork) {
-            bool spike(n->update(1));
-            if (spike) {
-                for(unsigned int i(0); i<n->synapses.size();++i) {
-                    n->synapses[i]->receive(globalsimulationclock_+D/hequals, n->getMembranePotential());
+     do {
+       
+       for (size_t neuron_id(0);neuron_id<NeuronesNetwork.size();++neuron_id)
+		{	
+      bool spike(NeuronesNetwork[neuron_id]->update(1));
+            if (spike) 
+				{
+					for(unsigned int i(0); i<NeuronesNetwork[neuron_id]->synapses.size();++i) 
+                {
+                    NeuronesNetwork[neuron_id]->synapses[i]->receive((globalsimulationclock_+D/hequals), NeuronesNetwork[neuron_id]->getMembranePotential());
                 }
+                
+                NeuronesNetwork[neuron_id]->setMembranePotential(0.0);
+                
+               
             }
         }
+         
+      
         globalsimulationclock_=globalsimulationclock_+1;
       } while(globalsimulationclock_<10000);
 
     cout<<"Start writing the spikes"<<endl;
     ofstream file("../spikes.txt");
     for(int i (0); i<numberOfNeurons_; ++i) {
-        for(auto& t:NeuronesNetwork[i]->getTimeOfSPike()) {
-           file<<t<<"\t"<<i<<"\n";
+        for(auto& n:NeuronesNetwork[i]->getTimeOfSPike()) {
+           file<<n<<"\t"<<i<<"\n";
         }
     }
 }

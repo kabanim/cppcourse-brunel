@@ -8,7 +8,7 @@ char c;
 int main() 
 {
 	
-	/*do 
+	do 
 	{
 	   
 	   cout<<"Which Brunel network do you want to simulate A,B,C or D (as specified in figure 8"<<endl;
@@ -21,14 +21,14 @@ int main()
      {
 		case 'A':
 		{
-			*/cout<<"Running A..."<<endl;
+			cout<<"Running A..."<<endl;
 			
 			
-	   Network net(0);
+	   Network net(0,2,3);
        net.initializeNetwork();
        net.simulation();
        
-       /*
+       
 		break;
 		}
 		case 'B':
@@ -58,7 +58,7 @@ int main()
 		 
 		 cout<<"Simulation completed"<<endl;
 		 
-	 }*/
+	 }
    
     
 

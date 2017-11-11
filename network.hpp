@@ -34,8 +34,10 @@ class Network
 	/*! \brief Constructor
 	 *  \details Initializes the network.
 	 * @param long time
+	 * @param long vext poisson parameter
+	 * @param long g strength of connections
 	 */
-	Network(long t);//,double,double);
+	Network(long t,double,double);
 	
 	
 	
@@ -48,7 +50,7 @@ class Network
 static double Noise() {
 	static std::random_device dev;
 	static std::mt19937 generator(dev());
-	static std::poisson_distribution<> poisson(vext);
+	static std::poisson_distribution<> poisson(vext_);
 	int spikes_number=poisson(generator);
 	return J_E*spikes_number;
 }
@@ -82,13 +84,13 @@ static double Noise() {
 	long globalsimulationclock_;
 	
 	///*!firing rate of the poisson distribution lamba */
-	//static double vext_;
+	static double vext_;
 
 	/*!relative strength of the inhibitory synapses*/
-	//double g_;
+	double g_;
 	
 	/*!the post synaptic potential of inhibitory */
-  //  double J_I=- g_*J_E;
+   double J_I=- g_*J_E;
 
 };
 #endif 

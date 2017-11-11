@@ -3,10 +3,10 @@
 
 
 /*!firing rate poisson lamba */
-double const vext=2;
+//double const vext=2;
 
 /*!relative strength of the inhibitory synapses*/
-double const g=3;
+//double const g=3;
 
 /*! tau=RC in ms */
 double const tau_excitation = 20;
@@ -36,7 +36,7 @@ int const refrac=2;
 double const J_E=0.1;
 
 /*!the post synaptic potential of inhibitory */
-double const J_I=- g*J_E;
+//double const J_I=- g*J_E;
 
 /*!the delay of transmission in ms*/
 double const D=1.5;
