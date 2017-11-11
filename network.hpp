@@ -39,7 +39,15 @@ class Network
 	 */
 	Network(long t,double,double);
 	
-	
+	/*! \brief Constructor
+	 *  \details Initializes the network.
+	 * @param long time
+	 * @param long vext poisson parameter
+	 * @param long g strength of connections
+	 * @param unsigned int number of connections
+	 * Used for testing
+	 */
+	Network(long t,double vext, double g, unsigned int number);
 	
 	
    /*! \brief initializes the network of neurons
@@ -69,6 +77,9 @@ static double Noise() {
 	
 	 /*! \brief neurons in the network */
     std::vector<Neuro*> NeuronesNetwork;
+    
+    /*! \brief sets the number of neurons in the network */
+    void setNumberOfNeurons(unsigned int);
 	
 	/*! \brief Destructor */
 	~Network();

@@ -27,7 +27,8 @@ int main()
 	   Network net(0,2,3);
        net.initializeNetwork();
        net.simulation();
-       
+       cout<<"Simulation completed"<<endl;
+
        
 		break;
 		}
@@ -37,6 +38,8 @@ int main()
 	   Network net(0,4,6);
        net.initializeNetwork();
        net.simulation();
+       cout<<"Simulation completed"<<endl;
+
 		break;	
 		}
 		case 'C':
@@ -45,6 +48,8 @@ int main()
 	   Network net(0,2,5);
        net.initializeNetwork();
        net.simulation();
+       cout<<"Simulation completed"<<endl;
+
 		break;			
 		}
 		case 'D': 
@@ -53,10 +58,11 @@ int main()
 	   Network net(0,0.9,4.5);
        net.initializeNetwork();
        net.simulation();
+       cout<<"Simulation completed"<<endl;
+
 		break;			
 		}
 		 
-		 cout<<"Simulation completed"<<endl;
 		 
 	 }
    

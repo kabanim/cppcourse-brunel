@@ -29,7 +29,10 @@ class Neuro
 {
 	public:
 	 #ifdef TEST
-		FRIEND_TEST(neuronetest, activate_neuron);
+		FRIEND_TEST(neuronetest, activateNeuron);
+		FRIEND_TEST(neuronetest, update);
+		FRIEND_TEST(neuronetest, refactory);
+
 	  #endif
 
 	
@@ -37,7 +40,7 @@ class Neuro
 		/*! \brief Constructor
 		 *  \details Initializes a Neuron.
 		 */
-    Neuro(double MembranePotential);
+    Neuro(double potential);
 
     /*! \brief Constructor of copy
      * 

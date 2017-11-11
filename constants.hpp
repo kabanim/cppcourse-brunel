@@ -29,7 +29,7 @@ double const membrane_resistance=20;
 /*!the connection probability in the network of neurons*/
 double const connectionProbability=0.1;
 
-/*!refractory time of one 1 ms*/
+/*!refractory time of one 2 ms*/
 int const refrac=2;
 
 /*!the EPSP amplitude in mV */

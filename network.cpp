@@ -3,10 +3,10 @@
 double Network::vext_;
 
 Network::Network(long t,double vext, double g)
-:numberOfNeurons_(12500),globalsimulationclock_(0),g_(g),J_I(-g_*J_E)
+:globalsimulationclock_(0),g_(g),J_I(-g_*J_E)
 {
 	vext_=vext;
-
+	setNumberOfNeurons(12500);
    for (int i(0); i<C_E*numberOfNeurons_; ++i) {
 		NeuronesNetwork.push_back(new Neuro(J_E));
 	}
@@ -16,6 +16,27 @@ Network::Network(long t,double vext, double g)
 		NeuronesNetwork.push_back(new Neuro (J_I));	
 	}
 
+}
+
+Network::Network(long t,double vext, double g, unsigned int number)
+:globalsimulationclock_(0),g_(g),J_I(-g_*J_E)
+{
+	vext_=vext;
+	setNumberOfNeurons(number);
+   for (int i(0); i<C_E*numberOfNeurons_; ++i) {
+		NeuronesNetwork.push_back(new Neuro(J_E));
+	}
+
+    for (int i(C_E*numberOfNeurons_); i<numberOfNeurons_; ++i) {
+				
+		NeuronesNetwork.push_back(new Neuro (J_I));	
+	}
+
+}
+void Network::setNumberOfNeurons(unsigned int number)
+{
+	numberOfNeurons_=number;
+	
 }
 
 void Network::initializeNetwork() {
@@ -45,12 +66,9 @@ void Network::simulation() {
 				{
 					for(unsigned int i(0); i<NeuronesNetwork[neuron_id]->synapses.size();++i) 
                 {
-                    NeuronesNetwork[neuron_id]->synapses[i]->receive((globalsimulationclock_+D/hequals), NeuronesNetwork[neuron_id]->getMembranePotential());
+                    NeuronesNetwork[neuron_id]->synapses[i]->receive(globalsimulationclock_+ D/hequals, NeuronesNetwork[neuron_id]->getMembranePotential());
                 }
                 
-                NeuronesNetwork[neuron_id]->setMembranePotential(0.0);
-                
-               
             }
         }
          

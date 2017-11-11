@@ -48,7 +48,8 @@ bool Neuro::update(unsigned long h) {
         setMembranePotential(0.0);
     }
 
-    if((localTime-t_spike)<refrac) {
+    if(isInRefractoryState()) 
+    {
         setMembranePotential(0.0);
     }
     else {

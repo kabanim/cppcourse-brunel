@@ -40,10 +40,16 @@ TEST(networktest, reset) {
 
 
 
-
-TEST(neuronetest, activate_neuron) {
+TEST(neuronetest, refactory) {
+	Neuro n1(0);
+	n1.setMembranePotential(20.1);
+	n1.update(1);
+	EXPECT_EQ(n1.isInRefractoryState(),true);
 	
-Neuro neuron(0);	
+}
+TEST(neuronetest, activateNeuron) {
+	
+	Neuro neuron(0);	
 	neuron.MembranePotential = 20.0;
 	EXPECT_EQ(neuron.MembranePotential, Vth);
 	
@@ -57,14 +63,30 @@ Neuro neuron(0);
 	EXPECT_GT (neuron.MembranePotential, Vth);
 	
 }
+TEST(neuronetest, update) {
+	Neuro n1(0);
+	n1.setMembranePotential(20.1);
+	EXPECT_EQ(n1.update(1),true);
+	
+}
 
-/**FRIEND_TEST(networktest, numberOfConnections)
+TEST(networktest, numberOfConnections)
 {
 
+	Network n(0,2,3,100);
+	n.initializeNetwork();
+	std::vector <unsigned int> connections (100,0);
+	for (unsigned int i(0); i<connectionProbability*100;++i) ///we test with 100 neurons
+	{
+		for (unsigned j(0); j< n.NeuronesNetwork[i]->synapses.size();++j)
+		{
+			
+			++connections[j];
+		}
+	}
 	
-	
-	
-}**/
+	EXPECT_EQ(connections[0],10);
+}
 
 
 int main(int argc, char **argv) { 
