@@ -29,32 +29,31 @@ class Network
 
 		#endif
 	
-	int tstop=10000;
-	int tstart=0;
-	int a=0;
-	int b=4000;
+
+	
+
+	
 	/*! \brief Constructor
 	 *  \details Initializes the network.
 	 * @param long time
 	 */
-	Network(long t);
+	Network(long t);//,double,double);
 	
-	/*! \brief initializes the network of neurons
-	 *  \details creates the neurons with the constants we have i.e 20% inhibitory and 80% excitatory
-	 * it also generates the connetion between neurons according to uniform random distribution
-	 */
-	 
-	 
+	
+	
+	
+   /*! \brief initializes the network of neurons
+	*  \details creates the neurons with the constants we have i.e 20% inhibitory and 80% excitatory
+	* it also generates the connetion between neurons according to uniform random distribution
+	*/
 
-	 static double Noise() 
-	 {
-    std::random_device dev;
-    std::mt19937 generator(dev());
-    std::poisson_distribution<> poisson(vext);
-	int spikes_number=poisson(generator);
-	return J_E*spikes_number;
-	
-	 }
+static double Noise() {
+static std::random_device dev;
+static std::mt19937 generator(dev());
+static std::poisson_distribution<> poisson(vext_);
+int spikes_number=poisson(generator);
+return J_E*spikes_number;
+}
 	
 	void initializeNetwork();
 	
@@ -78,12 +77,20 @@ class Network
 	
 	/*! \brief mumber of neurons in the network */
 
-	unsigned int numberOfNeurons;
+	unsigned int numberOfNeurons_;
 	
 	/*! \brief global time of the simulation */
 
-	long globalsimulationclock;
+	long globalsimulationclock_;
+	
+	///*!firing rate of the poisson distribution lamba */
+	//static double vext_;
+
+	/*!relative strength of the inhibitory synapses*/
+	//double g_;
+	
+	/*!the post synaptic potential of inhibitory */
+  //  double J_I=- g_*J_E;
 
 };
 #endif 
-

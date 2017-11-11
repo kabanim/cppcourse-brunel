@@ -1,6 +1,0 @@
-/home/localguest/Documents/Neuro_3/build-dir3/CMakeFiles/doc.dir
-/home/localguest/Documents/Neuro_3/build-dir3/gtest/CMakeFiles/gtest.dir
-/home/localguest/Documents/Neuro_3/build-dir3/CMakeFiles/neuronetest.dir
-/home/localguest/Documents/Neuro_3/build-dir3/CMakeFiles/networktest.dir
-/home/localguest/Documents/Neuro_3/build-dir3/gtest/CMakeFiles/gtest_main.dir
-/home/localguest/Documents/Neuro_3/build-dir3/CMakeFiles/simulation.dir

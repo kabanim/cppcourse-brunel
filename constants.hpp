@@ -3,10 +3,10 @@
 
 
 /*!firing rate poisson lamba */
-int const vext=0.9;
+double const vext=2;
 
 /*!relative strength of the inhibitory synapses*/
-double const g=4.5;
+double const g=3;
 
 /*! tau=RC in ms */
 double const tau_excitation = 20;

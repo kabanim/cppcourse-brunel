@@ -1,5 +1,0 @@
-networktest 0 0
-neuronetest 0 0
----
-networktest
-neuronetest
