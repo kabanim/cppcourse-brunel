@@ -2,20 +2,65 @@
 #include "network.hpp"
 #include <fstream>
 using namespace std;
-int main() {
+char c;
+
+
+int main() 
+{
 	
-    int a(0),b(4000);
-    double Iext(1.01);
-    double PotentialThreshold(20);
-    int tstart(0);
-    int tstop(10);
-
-    Network N(0);
-
-    N.initializeNetwork();
-    cout<<"i am here 1"<<std::endl;
-    N.simulation();
-    cout<<"i am here 2"<<std::endl;
+	/*do 
+	{
+	   
+	   cout<<"Which Brunel network do you want to simulate A,B,C or D (as specified in figure 8"<<endl;
+	   cin>> c;
+	}	
+   while((c<'A' or c>'D') ); 
+   
+     
+     switch (c)
+     {
+		case 'A':
+		{
+			*/cout<<"Running A..."<<endl;
+			
+			
+	   Network net(0);
+       net.initializeNetwork();
+       net.simulation();
+       
+       /*
+		break;
+		}
+		case 'B':
+		{
+		cout<<"Running B..."<<endl;
+	   Network net(0,4,6);
+       net.initializeNetwork();
+       net.simulation();
+		break;	
+		}
+		case 'C':
+		{
+		cout<<"Running C..."<<endl;
+	   Network net(0,2,5);
+       net.initializeNetwork();
+       net.simulation();
+		break;			
+		}
+		case 'D': 
+		{
+		cout<<"Running D..."<<endl;
+	   Network net(0,0.9,4.5);
+       net.initializeNetwork();
+       net.simulation();
+		break;			
+		}
+		 
+		 cout<<"Simulation completed"<<endl;
+		 
+	 }*/
+   
+    
 
     return 0;
 
